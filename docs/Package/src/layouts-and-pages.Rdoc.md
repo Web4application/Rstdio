@@ -7,7 +7,7 @@ version: 16.2.4
 lastUpdated: 2026-04-10
 prerequisites:
   - "Getting Started: /docs/app/getting-started"
-related:
+related: 
   - app/getting-started/linking-and-navigating
   - app/api-reference/file-conventions/layout
   - app/api-reference/file-conventions/page
