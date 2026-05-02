@@ -1,5 +1,5 @@
 ---
-title: Server and Client Components
+title: R studio Server and Client Components
 description: Learn how you can use React Server and Client Components to render parts of your application on the server or the client.
 url: "https://nextjs.org/docs/app/getting-started/server-and-client-components"
 docs_index: /docs/llms.txt
@@ -26,7 +26,7 @@ Use **Client Components** when you need:
 * [State](https://react.dev/learn/managing-state) and [event handlers](https://react.dev/learn/responding-to-events). E.g. `onClick`, `onChange`.
 * [Lifecycle logic](https://react.dev/learn/lifecycle-of-reactive-effects). E.g. `useEffect`.
 * Browser-only APIs. E.g. `localStorage`, `window`, `Navigator.geolocation`, etc.
-* [Custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
+>* [Custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
 
 Use **Server Components** when you need:
 
@@ -36,7 +36,7 @@ Use **Server Components** when you need:
 * Improve the [First Contentful Paint (FCP)](https://web.dev/fcp/), and stream content progressively to the client.
 
 For example, the `<Page>` component is a Server Component that fetches data about a post, and passes it as props to the `<LikeButton>` which handles client-side interactivity.
-
+>
 ```tsx filename="app/[id]/page.tsx" highlight={1,17} switcher
 import LikeButton from '@/app/ui/like-button'
 import { getPost } from '@/lib/data'
@@ -398,7 +398,7 @@ export default function RootLayout({
   )
 }
 ```
-
+>
 ```jsx filename="app/layout.js" switcher
 import ThemeProvider from './theme-provider'
 
@@ -424,7 +424,7 @@ When using a third-party component that relies on client-only features, you can 
 For example, the `<Carousel />` can be imported from the `acme-carousel` package. This component uses `useState`, but it doesn't yet have the `"use client"` directive.
 
 If you use `<Carousel />` within a Client Component, it will work as expected:
-
+>
 ```tsx filename="app/gallery.tsx" switcher
 'use client'
 
@@ -484,7 +484,7 @@ export default Carousel
 ```
 
 Now, you can use `<Carousel />` directly within a Server Component:
-
+>
 ```tsx filename="app/page.tsx" switcher
 import Carousel from './carousel'
 
@@ -522,7 +522,7 @@ export default function Page() {
 ### Preventing environment poisoning
 
 JavaScript modules can be shared between both Server and Client Components modules. This means it's possible to accidentally import server-only code into the client. For example, consider the following function:
-
+>
 ```ts filename="lib/data.ts" switcher
 export async function getData() {
   const res = await fetch('https://external-service.com/data', {
