@@ -1,9 +1,9 @@
 ---
-title: My Rmarkdown Document
+title: My python Rmarkdown Document
 output: html_document
 params:
   days:
-    label: "Number of Previous Days"
+    label: "Detecting marine heatwaves paper aura.xlsl."
     value: 90
     input: slider
     min: 60
