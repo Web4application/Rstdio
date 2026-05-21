@@ -1,0 +1,165 @@
+{
+  "version": "4.0-web4-neuro",
+  "architecture": "Hybrid Transformer + Memory Routing + BNN",
+  "model_family": "LMLM-BNN",
+
+  "special_tokens": {
+    "bos": {
+      "token": "<s>",
+      "role": "begin_sequence"
+    },
+
+    "eos": {
+      "token": "</s>",
+      "role": "end_sequence"
+    },
+
+    "cls": {
+      "token": "<cls>",
+      "role": "classification"
+    },
+
+    "sep": {
+      "token": "<sep>",
+      "role": "context_separator"
+    },
+
+    "pad": {
+      "token": "<pad>",
+      "role": "dynamic_padding"
+    },
+
+    "unk": {
+      "token": "<unk>",
+      "role": "unknown_fallback"
+    },
+
+    "mask": {
+      "token": "<mask>",
+      "options": {
+        "lstrip": true,
+        "rstrip": false,
+        "normalized": true,
+        "single_word": false,
+        "adaptive_context_prediction": true
+      }
+    }
+  },
+
+  "advanced_reasoning_tokens": [
+    "<think>",
+    "<analyze>",
+    "<reason>",
+    "<reflect>",
+    "<memory>",
+    "<logic>",
+    "<simulate>",
+    "<infer>",
+    "<multimodal>",
+    "<code_exec>",
+    "<vision>",
+    "<audio>",
+    "<video>",
+    "<agent_mode>",
+    "<web4>",
+    "<quantum_route>",
+    "<recursive_chain>",
+    "<neural_cache>",
+    "<latent_plan>"
+  ],
+
+  "task_tokens": [
+    {
+      "token": "<s_cord-v3>",
+      "purpose": "document_understanding"
+    },
+    {
+      "token": "<s_web4-ai>",
+      "purpose": "distributed_web4_reasoning"
+    },
+    {
+      "token": "<s_bnn>",
+      "purpose": "binary_neural_network_mode"
+    },
+    {
+      "token": "<s_lmlm>",
+      "purpose": "large_memory_language_model"
+    }
+  ],
+
+  "memory_system": {
+    "persistent_memory": true,
+    "contextual_recall": true,
+    "vector_memory_cache": true,
+    "semantic_clustering": true,
+    "multi_session_learning": true,
+    "neural_state_tracking": true
+  },
+
+  "bnn_engine": {
+    "enabled": true,
+    "precision_mode": "1-bit-adaptive",
+    "binary_attention_layers": true,
+    "quantized_embeddings": true,
+    "low_power_inference": true,
+    "edge_device_optimization": true
+  },
+
+  "lmlm_core": {
+    "hierarchical_reasoning": true,
+    "recursive_planning": true,
+    "long_context_window": 1048576,
+    "dynamic_chain_of_thought": true,
+    "multi_agent_reasoning": true,
+    "self_reflection": true,
+    "adaptive_tool_usage": true
+  },
+
+  "multimodal_support": {
+    "text": true,
+    "vision": true,
+    "audio": true,
+    "video": true,
+    "3d_data": true,
+    "sensor_streams": true,
+    "blockchain_data": true,
+    "realtime_web_streams": true
+  },
+
+  "security": {
+    "allow_remote_code": false,
+    "safe_tensor_only": true,
+    "sandbox_execution": true,
+    "prompt_injection_detection": true,
+    "adversarial_input_filtering": true,
+    "encrypted_memory_cache": true,
+    "model_signature_verification": true
+  },
+
+  "training_modes": {
+    "supervised_learning": true,
+    "reinforcement_learning": true,
+    "self_supervised_learning": true,
+    "continual_learning": true,
+    "federated_learning": true
+  },
+
+  "optimization": {
+    "flash_attention": true,
+    "mixture_of_experts": true,
+    "speculative_decoding": true,
+    "neural_compilation": true,
+    "tensor_parallelism": true,
+    "pipeline_parallelism": true
+  },
+
+  "deployment": {
+    "cloud_ready": true,
+    "edge_ready": true,
+    "mobile_ready": true,
+    "browser_inference": true,
+    "wasm_support": true,
+    "gpu_acceleration": true,
+    "npu_acceleration": true
+  }
+}
