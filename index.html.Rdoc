@@ -1,5 +1,5 @@
 ---
-title: My Document
+title: My Rmarkdown Document
 output: html_document
 params:
   days:
@@ -101,7 +101,7 @@ params:
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/robwschlegel/MHWdetection">
+  <a href="https://github.com/web4application/MHWdetection">
     <span class="fa fa-github fa-lg"></span>
      
     github
@@ -155,7 +155,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Robert W. Schlegel <br><small class="roles"> Author, maintainer, contributor </small> <a href="https://orcid.org/0000-0002-0705-1287" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
+<li>seriki yakub <br><small class="roles"> Author, maintainer, contributor </small> <a href="https://orcid.org/0009-0007-9853-0411" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 <li>Eric C. J. Oliver <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4006-2826" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 <li>Alistair J. Hobday <br><small class="roles"> Author </small>  </li>
 <li>Albertus J. Smit <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-3799-6126" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
