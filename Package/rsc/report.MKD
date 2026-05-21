@@ -1,0 +1,19 @@
+---
+title: AI Report
+author: RODA AI
+---
+
+# {.rmd}
+
+```python
+print("Hello Web4")
+
+---
+
+# 📤 5. Save output (HTML report)
+
+Inside your script, you can extend:
+
+```python id="save_html"
+with open("output.html", "w", encoding="utf-8") as f:
+    f.write(html)
