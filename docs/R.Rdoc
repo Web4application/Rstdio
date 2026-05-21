@@ -1,0 +1,185 @@
+# Publishing from RStudio
+
+You must configure your Posit Connect account before attempting to publish with RStudio.
+
+## Configuring your account
+
+To add a publishing account to RStudio, from RStudio click **Tools** in the main menu, then click **Global Optionsâ€¦**.
+
+[![Global options selection in Tools menu.](../images/screenshots/connecting-1.png)](../images/screenshots/connecting-1.png)
+
+In the Options panel that appears, select **Publishing** in the sidebar, then click the **Connectâ€¦** button to add a new account.
+
+[![Publishing account configuration modal.](../images/screenshots/connecting-2.png)](../images/screenshots/connecting-2.png)
+
+Select that you want to configure a Connect account, then enter the address of your server. Your Connect administrator can provide you with the address of the Connect server.
+
+[![Posit Connect account configuration.](../images/screenshots/connecting-3.png)](../images/screenshots/connecting-3.png)
+
+Click **Next** to open a login window for Connect.
+
+[![Successful login to link Posit Connect to RStudio.](../images/screenshots/loggedin.png)](../images/screenshots/loggedin.png)
+
+Log into Connect and click **Connect** to authorize RStudio to deploy on your behalf. Then return to RStudio and click the **Connect Account** button.
+
+Once you have successfully configured RStudio, you can now publish content to Connect.
+
+For more information on RStudio, please see the [RStudio User Guide](https://docs.posit.co/ide/user/).
+
+### Update RStudio
+
+You need to install at least version 1.0.44 of RStudio to interact with Connect. You can confirm your version by opening RStudio and clicking **Help** \> **About RStudio** and checking the version number at the top of that pane. If you are not running at least version 1.0.44, you need to [download the latest release](https://posit.co/download/rstudio-desktop/).
+
+### Time sync
+
+The system running RStudio needs to have a synchronized system clock. Content deployments will fail if the time reported by that system is too different from the system running Connect. Most operating systems can be configured to automatically set the date and time using `ntp` or some other clock syncing service.
+
+## General publishing instructions
+
+Posit Connect accepts publishing Shiny applications, R Markdown documents, plots, graphs, websites, Jupyter Notebooks, Plumber APIs, and Quarto documents and projects. The blue **Publishing** icon in RStudio indicates built-in support for publishing this piece of content.
+
+[![The Posit publishing icon.](../images/publishIcon_2x.png)](../images/publishIcon_2x.png)
+
+You can find the blue **Publishing** icon in the following locations:
+
+- The upper right of the file editor
+- The document viewer when viewing a document
+- The embedded viewer when running a Shiny application
+- The Plots pane
+
+Click on the publishing icon to open a publishing dialog where you can name your content and select additional files to include in the deployment. By default, RStudio tries to infer the data files and scripts are used in your content. This window lets you refine those file selections.
+
+[![RStudio publishing dialog.](../images/screenshots/publishing-rmd.png)](../images/screenshots/publishing-rmd.png)
+
+Most of the time, RStudio is able to automatically determine which files are needed to render your document on Connect. However, there are situations in which it misses files (for instance, if the file is not referenced directly in your document). The **Add Moreâ€¦** button lets you add files to the bundle that are sent to Connect so that they are available on the server when your document is rendered. You can also use the `resource_files` field in your documentâ€™s YAML header to add additional files.
+
+Deployed data files must be in the same directory as your Shiny application or R Markdown document, or in a subdirectory of that location. Files stored elsewhere on your computer are not available on the remote server and cannot be included in the content bundle.
+
+Click **Publish** after verifying your settings.
+
+Your first deployment can take a few minutes, as Connect attempts to recreate the Python and/or R environments your content uses locally, and referenced packages are downloaded and installed. These packages are cached on the server. Subsequent deployments will be faster.
+
+Not all of your RStudio environment can be replicated on the server. Different operating systems or versions of R can occasionally make content behave differently. Package installation failures may require the installation of additional system libraries on Posit Connect.
+
+When the deployment completes, the Connect Settings page for your content opens. Your deployed content should display alongside its settings. For example, a rendered version of your document or a live instance of your Shiny application.
+
+[![Example of a running application in Connect.](../images/screenshots/running-app.png)](../images/screenshots/running-app.png)
+
+This page allows you to verify the sharing and visibility of your deployed content. See the [Content Settings Panel](../../user/content-settings/index.llms.md) section for additional information.
+
+## Publishing documents
+
+Using RStudio, you can publish R Markdown (`.Rmd`) and Quarto (`.qmd`) documents to Posit Connect.
+
+When publishing documents to Connect, you might encounter other deployment options, depending on your content. These are discussed here.
+
+### Publishing destination
+
+[RPubs](https://rpubs.com) is a service for easily sharing R Markdown documents. RPubs is not related to Posit Connect. You should always select **Posit Connect** if you wish to publish your content to Connect.
+
+[![RStudio dialog to publish to RPubs or Connect.](../images/screenshots/publish-rpubs-or-connect.png)](../images/screenshots/publish-rpubs-or-connect.png)
+
+### Publish source code
+
+The **Publish document with source code** and **Publish finished document only** options display when publishing from the document viewer.
+
+[![RStudio dialog to publish source code.](../images/screenshots/publish-source-or-finished.png)](../images/screenshots/publish-source-or-finished.png)
+
+Publishing the document with source code means that your R Markdown or Quarto file (`.Rmd` or `.qmd`) will be deployed to Connect. This file is rendered (usually to HTML) on the server.
+
+Publishing only the finished document means that the HTML file you rendered locally is deployed to Connect.
+
+We recommend publishing your documents with source code, as it allows you to render the document with Connect (on a weekly schedule, for example). If the document cannot be rendered by Connect because of files or data sources that are unavailable on the server, choose **Publish finished document only** so others can view your work.
+
+### Document selection
+
+The **Publish just this document** and **Publish all documents in the directory** options appear when publishing an R Markdown or Quarto document from a directory that contains more than one such document. It is possible to link together multiple R Markdown or Quarto documents to make a multi-page document, so this is your chance to indicate that youâ€™ve done this, and to publish all the documents at once. In most cases, you will want to publish just the current document.
+
+[![RStudio dialog to publish one or all documents.](../images/screenshots/publish-one-or-all.png)](../images/screenshots/publish-one-or-all.png)
+
+## Collaboration
+
+Some data products have multiple authors and collaborators who are responsible for managing the content deployed to Posit Connect. The first step to collaboration is sharing and working together on code. We recommend using a version control tool like Git to coordinate collaboration across many users. General information about getting started with git is [available elsewhere](https://happygitwithr.com/).
+
+The second step is collaborating on the published data product. To let multiple users maintain and update a single piece of content on Connect, all users should be listed as collaborators on the content.
+
+[![Connect content showing multiple collaborators.](../images/screenshots/publish-collaborators.png)](../images/screenshots/publish-collaborators.png)
+
+When content is published to Connect for the first time, a folder named `rsconnect` is created in your contentâ€™s directory.
+
+> **NOTE:**
+>
+> The `rsconnect` folder should be added to and tracked by version control, as it does not contain any private or secure information. The folder contains information about the Connect server to which the content has been deployed, including the server and content URLs. This allows content to be published to the same destination in the future, updating that published copy in place.
+
+Once this folder is tracked in version control, a collaborator can clone or check out the code to their development system and make whatever changes or improvements are necessary. When ready to publish, they can click the `Publish` button in RStudio, which uses the `rsconnect` folder to determine where the content has been published. During the publishing process, Connect checks that the authenticated user has collaborator access for this piece of content.
+
+[![RStudio showing collaborative publishing.](../images/screenshots/publish-collaboration.png)](../images/screenshots/publish-collaboration.png)
+
+In addition to updating an existing published copy, a publisher can always publish a new copy by selecting **Other Destinationâ€¦** from the Publish menu. This creates a new piece of content on the selected server, and leaves the original content deployment unmodified.
+
+If you want to surface a single URL for your users despite publishing a new copy on the same server, keep in mind that you can assign a URL to a piece of content, and later assign it to a different piece of content on the server.
+
+[![RStudio option to create a new endpoint.](../images/screenshots/publish-endpoint-options.png)](../images/screenshots/publish-endpoint-options.png)
+
+Keep in mind that package environments might be different on each developerâ€™s computer. The original author and a collaborator might be using different computers, operating systems, or R versions with different package versions installed. Connect attempts to reproduce the environment of whoever is publishing the content. Keeping developer environments in sync is not a problem solved by Connect. The [`renv`](https://rstudio.github.io/renv/) package and [Posit Workbench](https://support.posit.co/hc/en-us/articles/211659737-Sharing-Projects-in-RStudio-Server-Pro) address this problem more directly.
+
+## Publishing content that uses Python and R
+
+The [reticulate](https://github.com/rstudio/reticulate) package allows users to create projects that contain Python and R code. Reticulate can be used across content types including Shiny applications, R Markdown documents, and plumber APIs.
+
+Posit Connect can deploy and host this content, and automatically restores both the Python and R environments. To deploy:
+
+1.  Ensure your server administrator has enabled Python in the Connect configuration, and double check that your project uses a version of Python available on Connect.
+
+2.  Projects deployed to Connect should use the [`RETICULATE_PYTHON`](https://rstudio.github.io/reticulate/articles/versions.html) environment variable and should not include any references to `reticulate::use_python`, `reticulate::use_virtualenv`, or `reticulate::use_conda`. See an example of [switching to `RETICULATE_PYTHON`](#switching-to-envvar).
+
+3.  Follow the publishing instructions that are specific to the type of content you are deploying. During deployment, the list of necessary Python packages are sent to Connect. Connect installs these packages into an isolated virtual environment, similar to the approach used for R packages.
+
+### Deployment logs for content with Python and R dependencies
+
+When you deploy this type of content, additional logs are available in both the RStudio **Deploy** pane and the Posit Connect [**Logs** pane](../../user/content-logs/index.llms.md).
+
+In RStudio, something similar to the following example displays in the **Deploy** pane, typically after a series of log lines detailing the R environment restore:
+
+``` default
+Completed packrat build against R version: '3.4.4' Bundle requested Python
+version 3.6.7; using /opt/python/3.6.7/bin/python3.6 which has version 3.6.7
+2019/03/05 22:31:15.585067606 Running with python "3.6.7 (default, Dec 11 2018,
+22:03:50)  [GCC 4.8.4]" at /opt/python/3.6.7/bin/python3.6
+```
+
+The first line signals that Connect has completed restoring the R environment. The second line indicates the version of Python discovered in RStudio as well as the matched version available on Connect. These lines are followed by logging that indicates the progress Connect has made in creating the Python environment. In some cases, these environments may be cached. For example:
+
+``` default
+2019/03/05 22:31:15.586051939 Using cached environment: eTZbLgG9EAv8_Nfcrq7LYw
+2019/03/05 22:31:16.025098703 Packages in the environment: numpy==1.16.2,
+pandas==0.24.1, python-dateutil==2.8.0, pytz==2018.9, six==1.12.0, Completed
+python build against Python version: '3.6.7'
+```
+
+In Connect, two log entries open, each with a unique Job ID, one entry is titled â€œR snapshot restoreâ€ and the second is titled â€œPython environment restore.â€
+
+### Switching to `RETICULATE_PYTHON`
+
+If your reticulate code currently uses `use_conda`, `use_virtualenv`, or `use_python`, you need to switch to using the `RETICULATE_PYTHON` environment variable in order for push-button publishing to work. Any of the `reticulate::use` functions can be replaced using the environment variable. For example, if you are using a virtual environment located in the project subfolder `./env`:
+
+1.  Remove the code `reticulate::use_virtualenv("./env")`
+
+2.  Create a `.Renviron` file in your project containing the line:
+
+    ``` bash
+    RETICULATE_PYTHON=./env/bin/python`
+    ```
+
+3.  Restart your R session
+
+4.  Use `reticulate::py_config()` to confirm the correct environment is in use
+
+After following these steps, you can push-button publish the content to Connect. You can continue project development using the environment variable, and you do not need to undo the change to continue working on your code.
+
+During push-button publishing, do not include the `.Renviron` file and the virtual environment in the `env` folder. One way to achieve this is to create an `.rscignore` file with content:
+
+``` default
+.Renviron
+env
+```
